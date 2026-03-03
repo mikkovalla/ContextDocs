@@ -1,0 +1,11 @@
+<docbrain_index package="zod">
+instruction: Read path entries, then open the file with the strongest topic/headings match.
+instruction: Prefer API/reference pages for exact syntax and behavior.
+
+---
+path: llms-full.md
+topic: Zod
+headings: Zod | Defining schemas | Primitives | Coercion | Literals | Strings | String formats | Emails | UUIDs | URLs
+tags: api, guide, migration, reference, database, query, schema, component
+hint: Start with "Zod" in llms-full.md.
+</docbrain_index>

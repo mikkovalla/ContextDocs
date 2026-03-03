@@ -1,0 +1,821 @@
+<docbrain_index package="nestjs">
+instruction: Read path entries, then open the file with the strongest topic/headings match.
+instruction: Prefer API/reference pages for exact syntax and behavior.
+
+---
+path: application-context.md
+topic: Standalone applications
+headings: Standalone applications | Getting started | Retrieving providers from static modules | Retrieving providers from dynamic modules | Terminating phase | Example
+tags: reference, query, typescript
+hint: Start with "Standalone applications" in application-context.md.
+---
+path: cli/libraries.md
+topic: Libraries
+headings: Libraries | Nest libraries | Creating libraries | Using libraries
+tags: api, authentication, schema, component, typescript, testing, deployment
+hint: Start with "Libraries" in cli/libraries.md.
+---
+path: cli/overview.md
+topic: Overview
+headings: Overview | Installation | Basic workflow | Project structure | CLI command syntax | Command overview | Requirements
+tags: api, guide, schema, component, typescript
+hint: Start with "Overview" in cli/overview.md.
+---
+path: cli/scripts.md
+topic: Nest CLI and scripts
+headings: Nest CLI and scripts | The nest binary | Build | Execution | Generation | Package scripts | Backward compatibility | Migration
+tags: migration, component, typescript
+hint: Start with "Nest CLI and scripts" in cli/scripts.md.
+---
+path: cli/usages.md
+topic: CLI command reference
+headings: CLI command reference | nest new | nest generate | nest build | nest start | nest add | nest info
+tags: api, reference, schema, component, typescript, testing
+hint: Start with "CLI command reference" in cli/usages.md.
+---
+path: cli/workspaces.md
+topic: Workspaces
+headings: Workspaces | Standard mode | Monorepo mode | Workspace projects | Applications | Libraries | CLI properties | Global compiler options | Global generate options | Project-specific generate options
+tags: schema, component, server, typescript, testing
+hint: Start with "Workspaces" in cli/workspaces.md.
+---
+path: components.md
+topic: Providers
+headings: Providers | Services | Dependency injection | Scopes | Custom providers | Optional providers | Property-based injection | Provider registration | Manual instantiation
+tags: guide, reference, component, client, typescript
+hint: Start with "Providers" in components.md.
+---
+path: controllers.md
+topic: Controllers
+headings: Controllers | Routing | Request object | Resources | Route wildcards | Status code | Response headers | Redirection | Route parameters | Sub-domain routing
+tags: api, guide, reference, database, query, schema, routing, server
+hint: Start with "Controllers" in controllers.md.
+---
+path: custom-decorators.md
+topic: Custom route decorators
+headings: Custom route decorators | Param decorators | Passing data | Working with pipes | Decorator composition
+tags: api, authentication, query, typescript
+hint: Start with "Custom route decorators" in custom-decorators.md.
+---
+path: deployment.md
+topic: Deployment
+headings: Deployment | Prerequisites | Building your application | Production environment | NODE\_ENV=production | Running your application | Health checks | Logging | Scaling up or out | Some other tips
+tags: api, guide, database, server, typescript, deployment
+hint: Start with "Deployment" in deployment.md.
+---
+path: devtools/ci-cd.md
+topic: CI/CD integration
+headings: CI/CD integration | Publishing graphs | Reports | Build preview | Integrations: GitHub Actions | Integrations: Gitlab Pipelines | Other CI/CD tools
+tags: api, guide, database, typescript, deployment
+hint: Start with "CI/CD integration" in devtools/ci-cd.md.
+---
+path: devtools/overview.md
+topic: Overview
+headings: Overview | Investigating the "Cannot resolve dependency" error | Routes explorer | Sandbox | Bootstrap performance analyzer | Audit | Preview static files
+tags: api, authentication, server, client, typescript, testing
+hint: Start with "Overview" in devtools/overview.md.
+---
+path: discover/who-uses.md
+topic: Who is using Nest?
+headings: Who is using Nest? | Companies
+tags: (none)
+hint: Start with "Who is using Nest?" in discover/who-uses.md.
+---
+path: enterprise.md
+topic: Official NestJS Consulting
+headings: Official NestJS Consulting | Official Support | Team Augmentation & Development | NestJS Best Practices | First-hand access | NestJS Workshops and Trainings
+tags: (none)
+hint: Start with "Official NestJS Consulting" in enterprise.md.
+---
+path: exception-filters.md
+topic: Exception filters
+headings: Exception filters | Throwing standard exceptions | Exceptions logging | Custom exceptions | Built-in HTTP exceptions | Arguments host | Binding filters | Catch everything | Inheritance
+tags: api, reference, schema, server, client, typescript
+hint: Start with "Exception filters" in exception-filters.md.
+---
+path: faq/errors.md
+topic: Common errors
+headings: Common errors | "Cannot resolve dependency" error | "Circular dependency" error | example chain AppModule -> FooModule | Debugging dependency errors | "File change detected" loops endlessly
+tags: api, guide, reference, typescript
+hint: Start with "Common errors" in faq/errors.md.
+---
+path: faq/global-prefix.md
+topic: Global prefix
+headings: Global prefix
+tags: typescript
+hint: Start with "Global prefix" in faq/global-prefix.md.
+---
+path: faq/http-adapter.md
+topic: HTTP adapter
+headings: HTTP adapter | Outside application context strategy | As injectable | Listening event
+tags: reference, server, typescript
+hint: Start with "HTTP adapter" in faq/http-adapter.md.
+---
+path: faq/hybrid-application.md
+topic: Hybrid application
+headings: Hybrid application | Sharing configuration
+tags: server, typescript
+hint: Start with "Hybrid application" in faq/hybrid-application.md.
+---
+path: faq/keep-alive-connections.md
+topic: Keep alive connections
+headings: Keep alive connections | Usage
+tags: typescript
+hint: Start with "Keep alive connections" in faq/keep-alive-connections.md.
+---
+path: faq/multiple-servers.md
+topic: HTTPS
+headings: HTTPS | Multiple simultaneous servers
+tags: server, typescript
+hint: Start with "HTTPS" in faq/multiple-servers.md.
+---
+path: faq/raw-body.md
+topic: Raw body
+headings: Raw body | Use with Express | Registering a different parser | Body parser size limit | Use with Fastify
+tags: typescript
+hint: Start with "Raw body" in faq/raw-body.md.
+---
+path: faq/request-lifecycle.md
+topic: Request lifecycle
+headings: Request lifecycle | Middleware | Guards | Interceptors | Pipes | Filters | Summary
+tags: query, component, server, typescript
+hint: Start with "Request lifecycle" in faq/request-lifecycle.md.
+---
+path: faq/serverless.md
+topic: Serverless
+headings: Serverless | Cold start | Benchmarks | Runtime optimizations | Example integration | Using standalone application feature
+tags: api, database, schema, routing, server, typescript
+hint: Start with "Serverless" in faq/serverless.md.
+---
+path: first-steps.md
+topic: First steps
+headings: First steps | Language | Prerequisites | Setup | Platform | Running the application | Linting and formatting | Lint and autofix with eslint | Format with prettier
+tags: api, server, typescript
+hint: Start with "First steps" in first-steps.md.
+---
+path: fundamentals/async-components.md
+topic: Asynchronous providers
+headings: Asynchronous providers | Injection | Example
+tags: database, component, typescript
+hint: Start with "Asynchronous providers" in fundamentals/async-components.md.
+---
+path: fundamentals/circular-dependency.md
+topic: Circular dependency
+headings: Circular dependency | Forward reference | ModuleRef class alternative | Module forward reference
+tags: reference, typescript
+hint: Start with "Circular dependency" in fundamentals/circular-dependency.md.
+---
+path: fundamentals/dependency-injection.md
+topic: Custom providers
+headings: Custom providers | DI fundamentals | Standard providers | Value providers: `useValue` | Non-class-based provider tokens | Class providers: `useClass` | Factory providers: `useFactory` | Alias providers: `useExisting` | Non-service based providers | Export custom provider
+tags: reference, database, typescript, testing
+hint: Start with "Custom providers" in fundamentals/dependency-injection.md.
+---
+path: fundamentals/discovery-service.md
+topic: Discovery service
+headings: Discovery service | Getting started | Discovering providers and controllers | Extracting metadata | Conclusion
+tags: component, typescript
+hint: Start with "Discovery service" in fundamentals/discovery-service.md.
+---
+path: fundamentals/dynamic-modules.md
+topic: Dynamic modules
+headings: Dynamic modules | Introduction | Dynamic module use case | Config module example | Module configuration | Example | Community guidelines | Configurable module builder | Custom method key | Custom options factory class
+tags: api, guide, database, component, typescript, testing, deployment
+hint: Start with "Dynamic modules" in fundamentals/dynamic-modules.md.
+---
+path: fundamentals/execution-context.md
+topic: Execution context
+headings: Execution context | ArgumentsHost class | Current application context | Host handler arguments | ExecutionContext class | Reflection and metadata | Low-level approach
+tags: reference, component, server, client, typescript
+hint: Start with "Execution context" in fundamentals/execution-context.md.
+---
+path: fundamentals/lazy-loading-modules.md
+topic: Lazy loading modules
+headings: Lazy loading modules | Getting started | Lazy loading controllers, gateways, and resolvers | Common use-cases
+tags: api, guide, reference, query, schema, server, typescript
+hint: Start with "Lazy loading modules" in fundamentals/lazy-loading-modules.md.
+---
+path: fundamentals/lifecycle-events.md
+topic: Lifecycle Events
+headings: Lifecycle Events | Lifecycle sequence | Lifecycle events | Usage | Asynchronous initialization | Application shutdown
+tags: api, typescript
+hint: Start with "Lifecycle Events" in fundamentals/lifecycle-events.md.
+---
+path: fundamentals/module-reference.md
+topic: Module reference
+headings: Module reference | Retrieving instances | Resolving scoped providers | Registering `REQUEST` provider | Getting current sub-tree | Instantiating custom classes dynamically
+tags: reference, typescript
+hint: Start with "Module reference" in fundamentals/module-reference.md.
+---
+path: fundamentals/platform-agnosticism.md
+topic: Platform agnosticism
+headings: Platform agnosticism | Build once, use everywhere
+tags: api, component, server
+hint: Start with "Platform agnosticism" in fundamentals/platform-agnosticism.md.
+---
+path: fundamentals/provider-scopes.md
+topic: Injection scopes
+headings: Injection scopes | Provider scope | Usage | Controller scope | Scope hierarchy | Request provider | Inquirer provider | Performance | Durable providers
+tags: reference, authentication, database, schema, component, server, typescript
+hint: Start with "Injection scopes" in fundamentals/provider-scopes.md.
+---
+path: fundamentals/unit-testing.md
+topic: Testing
+headings: Testing | Installation | Unit testing | Testing utilities | Auto mocking | End-to-end testing | Overriding globally registered enhancers | Testing request-scoped instances
+tags: api, reference, database, component, server, typescript, testing
+hint: Start with "Testing" in fundamentals/unit-testing.md.
+---
+path: graphql/cli-plugin.md
+topic: CLI Plugin
+headings: CLI Plugin | Overview | Comments introspection | Using the CLI plugin | SWC builder | OR npx ts-node apps/{YOUR_APP}/src/generate-metadata.ts | Integration with `ts-jest` (e2e tests)
+tags: schema, typescript
+hint: Start with "CLI Plugin" in graphql/cli-plugin.md.
+---
+path: graphql/complexity.md
+topic: Complexity
+headings: Complexity | Installation | Getting started | Field-level complexity | Query/Mutation-level complexity
+tags: query, schema, server, typescript
+hint: Start with "Complexity" in graphql/complexity.md.
+---
+path: graphql/directives.md
+topic: Directives
+headings: Directives | Custom directives | Code first | Schema first
+tags: query, schema, server, typescript
+hint: Start with "Directives" in graphql/directives.md.
+---
+path: graphql/extensions.md
+topic: Extensions
+headings: Extensions | Adding custom metadata | Using custom metadata
+tags: query, typescript
+hint: Start with "Extensions" in graphql/extensions.md.
+---
+path: graphql/federation.md
+topic: Federation
+headings: Federation | Federation with Apollo | Schema first | Code first | Federated example: Posts | Federated example: Gateway | Federation with Mercurius | Federation 2 | Federated example: Users
+tags: reference, query, schema, component, server, client, typescript
+hint: Start with "Federation" in graphql/federation.md.
+---
+path: graphql/field-middleware.md
+topic: Field middleware
+headings: Field middleware | Getting started | Global field middleware
+tags: api, database, query, schema, client, typescript
+hint: Start with "Field middleware" in graphql/field-middleware.md.
+---
+path: graphql/guards-interceptors.md
+topic: Other features
+headings: Other features | Overview | Execution context | Exception filters | Custom decorators | Execute enhancers at the field resolver level | Creating a custom driver
+tags: api, authentication, query, schema, server, typescript
+hint: Start with "Other features" in graphql/guards-interceptors.md.
+---
+path: graphql/interfaces.md
+topic: Interfaces
+headings: Interfaces | Code first | Interface resolvers | Schema first
+tags: schema, typescript
+hint: Start with "Interfaces" in graphql/interfaces.md.
+---
+path: graphql/mapped-types.md
+topic: Mapped types
+headings: Mapped types | Partial | Pick | Omit | Intersection | Composition
+tags: reference, typescript
+hint: Start with "Mapped types" in graphql/mapped-types.md.
+---
+path: graphql/mutations.md
+topic: Mutations
+headings: Mutations | Code first | Schema first
+tags: api, query, schema, server, typescript
+hint: Start with "Mutations" in graphql/mutations.md.
+---
+path: graphql/plugins.md
+topic: Plugins with Apollo
+headings: Plugins with Apollo | Custom plugins | Using external plugins | Plugins with Mercurius
+tags: query, server, typescript
+hint: Start with "Plugins with Apollo" in graphql/plugins.md.
+---
+path: graphql/quick-start.md
+topic: Harnessing the power of TypeScript & GraphQL
+headings: Harnessing the power of TypeScript & GraphQL | Installation | For Express and Apollo (default) | For Fastify and Apollo | npm i @nestjs/graphql @nestjs/apollo @apollo/server @as-integrations/fastify graphql | For Fastify and Mercurius | npm i @nestjs/graphql @nestjs/mercurius graphql mercurius | Overview | Getting started with GraphQL & TypeScript | GraphQL playground
+tags: api, guide, migration, reference, query, schema, server, typescript
+hint: Start with "Harnessing the power of TypeScript & GraphQL" in graphql/quick-start.md.
+---
+path: graphql/resolvers-map.md
+topic: Resolvers
+headings: Resolvers | Code first | Object types | Code first resolver | Query type names | Query decorator options | Args decorator options | Dedicated arguments class | Class inheritance | Generics
+tags: api, reference, query, schema, component, server, client, typescript
+hint: Start with "Resolvers" in graphql/resolvers-map.md.
+---
+path: graphql/scalars.md
+topic: Scalars
+headings: Scalars | Code first | Override a default scalar | Import a custom scalar | Create a custom scalar | Schema first
+tags: reference, query, schema, client, typescript
+hint: Start with "Scalars" in graphql/scalars.md.
+---
+path: graphql/schema-generator.md
+topic: Generating SDL
+headings: Generating SDL | Usage
+tags: reference, database, schema, typescript
+hint: Start with "Generating SDL" in graphql/schema-generator.md.
+---
+path: graphql/sharing-models.md
+topic: Sharing models
+headings: Sharing models | Using the model shim
+tags: database, typescript
+hint: Start with "Sharing models" in graphql/sharing-models.md.
+---
+path: graphql/subscriptions.md
+topic: Subscriptions
+headings: Subscriptions | Enable subscriptions with Apollo driver | Code first | Publishing | Filtering subscriptions | Mutating subscription payloads | Schema first | PubSub | Customize subscriptions server | Authentication over WebSockets
+tags: api, authentication, query, schema, server, client, typescript
+hint: Start with "Subscriptions" in graphql/subscriptions.md.
+---
+path: graphql/unions-and-enums.md
+topic: Unions
+headings: Unions | Code first | Schema first | Enums
+tags: api, reference, query, schema, server, typescript
+hint: Start with "Unions" in graphql/unions-and-enums.md.
+---
+path: guards.md
+topic: Guards
+headings: Guards | Authorization guard | Execution context | Role-based authentication | Binding guards | Setting roles per handler | Putting it all together
+tags: reference, authentication, typescript
+hint: Start with "Guards" in guards.md.
+---
+path: interceptors.md
+topic: Interceptors
+headings: Interceptors | Basics | Execution context | Call handler | Aspect interception | Binding interceptors | Response mapping | Exception mapping | Stream overriding | More operators
+tags: client, typescript
+hint: Start with "Interceptors" in interceptors.md.
+---
+path: introduction.md
+topic: Introduction
+headings: Introduction | Philosophy | Installation | Alternatives
+tags: api, server, typescript
+hint: Start with "Introduction" in introduction.md.
+---
+path: microservices/basics.md
+topic: Overview
+headings: Overview | Installation | Getting started | Message and Event Patterns | Request-response | Asynchronous responses | Event-based | Additional request details | Client (producer class) | Sending messages
+tags: api, database, component, server, client, typescript
+hint: Start with "Overview" in microservices/basics.md.
+---
+path: microservices/custom-transport.md
+topic: Custom transporters
+headings: Custom transporters | Creating a strategy | Client proxy | Message serialization
+tags: api, reference, component, server, client, typescript
+hint: Start with "Custom transporters" in microservices/custom-transport.md.
+---
+path: microservices/exception-filters.md
+topic: Exception filters
+headings: Exception filters | Filters | Inheritance
+tags: typescript
+hint: Start with "Exception filters" in microservices/exception-filters.md.
+---
+path: microservices/grpc.md
+topic: gRPC
+headings: gRPC | Installation | Overview | Options | Sample gRPC service | Client | Example | gRPC Reflection | gRPC Streaming | Streaming sample
+tags: api, guide, reference, authentication, server, client, typescript
+hint: Start with "gRPC" in microservices/grpc.md.
+---
+path: microservices/guards.md
+topic: Guards
+headings: Guards | Binding guards
+tags: typescript
+hint: Start with "Guards" in microservices/guards.md.
+---
+path: microservices/interceptors.md
+topic: Interceptors
+headings: Interceptors
+tags: typescript
+hint: Start with "Interceptors" in microservices/interceptors.md.
+---
+path: microservices/kafka.md
+topic: Kafka
+headings: Kafka | Installation | Overview | Options | Client | Message pattern | Message response subscription | Incoming | Outgoing | Event-based
+tags: guide, component, server, client, typescript
+hint: Start with "Kafka" in microservices/kafka.md.
+---
+path: microservices/mqtt.md
+topic: MQTT
+headings: MQTT | Installation | Overview | Options | Client | Context | Wildcards | Quality of Service (QoS) | Per-pattern QoS | Record builders
+tags: api, server, client, typescript
+hint: Start with "MQTT" in microservices/mqtt.md.
+---
+path: microservices/nats.md
+topic: NATS
+headings: NATS | Installation | Overview | Options | Client | Request-response | Event-based | Queue groups | Context | Wildcards
+tags: api, server, client, typescript
+hint: Start with "NATS" in microservices/nats.md.
+---
+path: microservices/pipes.md
+topic: Pipes
+headings: Pipes | Binding pipes
+tags: typescript
+hint: Start with "Pipes" in microservices/pipes.md.
+---
+path: microservices/rabbitmq.md
+topic: RabbitMQ
+headings: RabbitMQ | Installation | Overview | Options | Client | Context | Message acknowledgement | Record builders | Instance status updates | Listening to RabbitMQ events
+tags: api, reference, routing, server, client, typescript
+hint: Start with "RabbitMQ" in microservices/rabbitmq.md.
+---
+path: microservices/redis.md
+topic: Redis
+headings: Redis | Installation | Overview | Options | Client | Context | Wildcards | Instance status updates | Listening to Redis events | Underlying driver access
+tags: server, client, typescript
+hint: Start with "Redis" in microservices/redis.md.
+---
+path: middlewares.md
+topic: Middleware
+headings: Middleware | Dependency injection | Applying middleware | Route wildcards | Middleware consumer | Excluding routes | Functional middleware | Multiple middleware | Global middleware
+tags: api, guide, reference, typescript
+hint: Start with "Middleware" in middlewares.md.
+---
+path: migration.md
+topic: Migration guide
+headings: Migration guide | Upgrading packages | Express v5 | Query parameters parsing | Fastify v5 | Fastify CORS | Fastify middleware registration | Module resolution algorithm | Reflector type inference | Lifecycle hooks execution order
+tags: api, guide, migration, reference, query, schema, typescript, testing
+hint: Start with "Migration guide" in migration.md.
+---
+path: modules.md
+topic: Modules
+headings: Modules | Feature modules | Shared modules | Module re-exporting | Dependency injection | Global modules | Dynamic modules
+tags: api, database, component, typescript
+hint: Start with "Modules" in modules.md.
+---
+path: openapi/cli-plugin.md
+topic: CLI Plugin
+headings: CLI Plugin | Overview | Comments introspection | Using the CLI plugin | SWC builder | OR npx ts-node apps/{YOUR_APP}/src/generate-metadata.ts | Integration with `ts-jest` (e2e tests) | Troubleshooting `jest` (e2e tests) | Find jest cache directory (usually /tmp/jest_rs) | by running the following command in your NestJS project root
+tags: api, schema, component, typescript
+hint: Start with "CLI Plugin" in openapi/cli-plugin.md.
+---
+path: openapi/decorators.md
+topic: Decorators
+headings: Decorators
+tags: api, query, schema
+hint: Start with "Decorators" in openapi/decorators.md.
+---
+path: openapi/introduction.md
+topic: Introduction
+headings: Introduction | Installation | Bootstrap | Document options | Setup options | Example
+tags: api, server, typescript
+hint: Start with "Introduction" in openapi/introduction.md.
+---
+path: openapi/mapped-types.md
+topic: Mapped types
+headings: Mapped types | Partial | Pick | Omit | Intersection | Composition
+tags: api, reference, typescript
+hint: Start with "Mapped types" in openapi/mapped-types.md.
+---
+path: openapi/operations.md
+topic: Operations
+headings: Operations | Tags | Headers | Responses | File upload | Extensions | Advanced: Generic `ApiResponse`
+tags: api, reference, schema, component, server, client, typescript
+hint: Start with "Operations" in openapi/operations.md.
+---
+path: openapi/other-features.md
+topic: Other features
+headings: Other features | Global prefix | Global parameters | Global responses | Multiple specifications | Dropdown in the explorer bar
+tags: api, server, typescript
+hint: Start with "Other features" in openapi/other-features.md.
+---
+path: openapi/security.md
+topic: Security
+headings: Security | Basic authentication | Bearer authentication | OAuth2 authentication | Cookie authentication
+tags: api, authentication, typescript
+hint: Start with "Security" in openapi/security.md.
+---
+path: openapi/types-and-parameters.md
+topic: Types and parameters
+headings: Types and parameters | Arrays | Circular dependencies | Generics and interfaces | Enums | Enums schema | Property value examples | Raw definitions | Extra models | oneOf, anyOf, allOf
+tags: api, reference, query, schema, component, client, typescript
+hint: Start with "Types and parameters" in openapi/types-and-parameters.md.
+---
+path: pipes.md
+topic: Pipes
+headings: Pipes | Built-in pipes | Binding pipes | Custom pipes | Schema based validation | Object schema validation | Binding validation pipes | Class validator | Global scoped pipes | The built-in ValidationPipe
+tags: api, database, query, schema, client, typescript
+hint: Start with "Pipes" in pipes.md.
+---
+path: recipes/async-local-storage.md
+topic: Async Local Storage
+headings: Async Local Storage | Custom implementation | NestJS CLS | Installation | Usage | Testing | More information
+tags: api, testing
+hint: Start with "Async Local Storage" in recipes/async-local-storage.md.
+---
+path: recipes/cqrs.md
+topic: CQRS
+headings: CQRS | Installation | Commands | Queries | Events | Sagas | Unhandled exceptions | Subscribing to all events | Request-scoping | Example
+tags: reference, database, query, server, client, typescript
+hint: Start with "CQRS" in recipes/cqrs.md.
+---
+path: recipes/crud-generator.md
+topic: CRUD generator (TypeScript only)
+headings: CRUD generator (TypeScript only) | Introduction | Generating a new resource
+tags: api, query, schema, component, typescript, testing
+hint: Start with "CRUD generator (TypeScript only)" in recipes/crud-generator.md.
+---
+path: recipes/documentation.md
+topic: Documentation
+headings: Documentation | Setup | Generation | Contribute
+tags: guide
+hint: Start with "Documentation" in recipes/documentation.md.
+---
+path: recipes/hot-reload.md
+topic: Hot Reload
+headings: Hot Reload | With CLI | Installation | Configuration | Hot-Module Replacement | Without CLI | Example
+tags: reference, server, typescript
+hint: Start with "Hot Reload" in recipes/hot-reload.md.
+---
+path: recipes/mikroorm.md
+topic: MikroORM
+headings: MikroORM | Installation | Repositories | Using custom repositories | Load entities automatically | Serialization | Request scoped handlers in queues | Testing | Example
+tags: api, migration, reference, typescript, testing
+hint: Start with "MikroORM" in recipes/mikroorm.md.
+---
+path: recipes/mongodb.md
+topic: MongoDB (Mongoose)
+headings: MongoDB (Mongoose) | Getting started | Model injection | Example
+tags: guide, database, schema, component, typescript
+hint: Start with "MongoDB (Mongoose)" in recipes/mongodb.md.
+---
+path: recipes/necord.md
+topic: Necord
+headings: Necord | Installation | Usage | Text commands | Application commands | Slash commands | User context menu | Message context menu | Buttons | Select menus
+tags: component, server, client, typescript
+hint: Start with "Necord" in recipes/necord.md.
+---
+path: recipes/nest-commander.md
+topic: Nest Commander
+headings: Nest Commander | Installation | A Command file | Running the Command | Testing | Putting it all together | More Information
+tags: api, server, typescript, testing
+hint: Start with "Nest Commander" in recipes/nest-commander.md.
+---
+path: recipes/passport.md
+topic: Passport (authentication)
+headings: Passport (authentication) | Authentication requirements | Implementing Passport strategies | Implementing Passport local | Built-in Passport Guards | Login route | Logout route | JWT functionality | Implementing Passport JWT | Implement protected route and JWT strategy guards
+tags: api, reference, authentication, database, query, server, client, typescript
+hint: Start with "Passport (authentication)" in recipes/passport.md.
+---
+path: recipes/prisma.md
+topic: Prisma
+headings: Prisma | Getting started | Create your NestJS project | Set up Prisma | Set the generator output path | Configure the module format | Set the database connection | Create two database tables with Prisma Migrate | Install and generate Prisma Client | Use Prisma Client in your NestJS services
+tags: api, guide, migration, reference, database, query, schema, server
+hint: Start with "Prisma" in recipes/prisma.md.
+---
+path: recipes/repl.md
+topic: Read-Eval-Print-Loop (REPL)
+headings: Read-Eval-Print-Loop (REPL) | Usage | Native functions | Watch mode
+tags: api, server, typescript
+hint: Start with "Read-Eval-Print-Loop (REPL)" in recipes/repl.md.
+---
+path: recipes/router-module.md
+topic: Router module
+headings: Router module
+tags: api, routing, typescript
+hint: Start with "Router module" in recipes/router-module.md.
+---
+path: recipes/sentry.md
+topic: Sentry
+headings: Sentry | Installation | Basic setup | Exception handling | Readable stack traces | Testing the integration | Summary
+tags: guide, typescript, testing
+hint: Start with "Sentry" in recipes/sentry.md.
+---
+path: recipes/serve-static.md
+topic: Serve Static
+headings: Serve Static | Installation | Bootstrap | Configuration | Example
+tags: routing, server, client, typescript
+hint: Start with "Serve Static" in recipes/serve-static.md.
+---
+path: recipes/sql-sequelize.md
+topic: SQL (Sequelize)
+headings: SQL (Sequelize) | Getting started | Model injection
+tags: database, component, typescript
+hint: Start with "SQL (Sequelize)" in recipes/sql-sequelize.md.
+---
+path: recipes/sql-typeorm.md
+topic: SQL (TypeORM)
+headings: SQL (TypeORM) | Getting started | Repository pattern
+tags: database, component, typescript
+hint: Start with "SQL (TypeORM)" in recipes/sql-typeorm.md.
+---
+path: recipes/suites.md
+topic: Suites
+headings: Suites | Getting started | Install Suites | Set up type definitions | Create a sample service | Write a unit test | Pre-compile mock configuration | Testing with real dependencies | Token-based dependencies | Using mock() and stub() directly
+tags: api, guide, reference, database, query, typescript, testing
+hint: Start with "Suites" in recipes/suites.md.
+---
+path: recipes/swc.md
+topic: SWC
+headings: SWC | Installation | Getting started | OR nest start --builder swc | OR nest start --builder swc --watch | Type checking | CLI Plugins (SWC) | SWC configuration | Monorepo | Monorepo and CLI plugins
+tags: schema, typescript, testing
+hint: Start with "SWC" in recipes/swc.md.
+---
+path: recipes/terminus.md
+topic: Healthchecks (Terminus)
+headings: Healthchecks (Terminus) | Getting started | Setting up a Healthcheck | HTTP Healthcheck | TypeOrm health indicator | Disk health indicator | Memory health indicator | Custom health indicator | Logging | Graceful shutdown timeout
+tags: reference, database, component, server, typescript
+hint: Start with "Healthchecks (Terminus)" in recipes/terminus.md.
+---
+path: security/authentication.md
+topic: Authentication
+headings: Authentication | Creating an authentication module | Implementing the "Sign in" endpoint | JWT token | Implementing the authentication guard | Enable authentication globally | Passport integration | Example
+tags: api, authentication, server, client, typescript
+hint: Start with "Authentication" in security/authentication.md.
+---
+path: security/authorization.md
+topic: Authorization
+headings: Authorization | Basic RBAC implementation | Claims-based authorization | Integrating CASL | Advanced: Implementing a `PoliciesGuard`
+tags: guide, reference, authentication, database, client, typescript
+hint: Start with "Authorization" in security/authorization.md.
+---
+path: security/cors.md
+topic: CORS
+headings: CORS | Getting started
+tags: typescript
+hint: Start with "CORS" in security/cors.md.
+---
+path: security/csrf.md
+topic: CSRF Protection
+headings: CSRF Protection | Use with Express (default) | Use with Fastify
+tags: typescript
+hint: Start with "CSRF Protection" in security/csrf.md.
+---
+path: security/encryption-hashing.md
+topic: Encryption and Hashing
+headings: Encryption and Hashing | Encryption | Hashing
+tags: api, typescript
+hint: Start with "Encryption and Hashing" in security/encryption-hashing.md.
+---
+path: security/helmet.md
+topic: Helmet
+headings: Helmet | Use with Express (default) | Use with Fastify
+tags: api, reference, server, typescript
+hint: Start with "Helmet" in security/helmet.md.
+---
+path: security/rate-limiting.md
+topic: Rate Limiting
+headings: Rate Limiting | Multiple Throttler Definitions | Customization | Proxies | Websockets | GraphQL | Configuration | Async Configuration | Storages | Time Helpers
+tags: api, guide, migration, reference, server, client, typescript
+hint: Start with "Rate Limiting" in security/rate-limiting.md.
+---
+path: support.md
+topic: Support
+headings: Support | How can you help?
+tags: (none)
+hint: Start with "Support" in support.md.
+---
+path: techniques/caching.md
+topic: Caching
+headings: Caching | Installation | In-memory cache | Interacting with the Cache store | Auto-caching responses | Time-to-live (TTL) | Use module globally | Global cache overrides | WebSockets and Microservices | Adjust tracking
+tags: api, query, server, client, typescript
+hint: Start with "Caching" in techniques/caching.md.
+---
+path: techniques/compression.md
+topic: Compression
+headings: Compression | Use with Express (default) | Use with Fastify
+tags: server, client, typescript
+hint: Start with "Compression" in techniques/compression.md.
+---
+path: techniques/configuration.md
+topic: Configuration
+headings: Configuration | Installation | Getting started | Custom env file path | Disable env variables loading | Use module globally | Custom configuration files | Using the `ConfigService` | Configuration namespaces | Namespaced configurations in modules
+tags: api, reference, authentication, database, schema, typescript, testing
+hint: Start with "Configuration" in techniques/configuration.md.
+---
+path: techniques/cookies.md
+topic: Cookies
+headings: Cookies | Use with Express (default) | Use with Fastify | Creating a custom decorator (cross-platform)
+tags: typescript
+hint: Start with "Cookies" in techniques/cookies.md.
+---
+path: techniques/events.md
+topic: Events
+headings: Events | Getting started | Dispatching events | Listening to events | Preventing event loss | Example
+tags: server, typescript
+hint: Start with "Events" in techniques/events.md.
+---
+path: techniques/file-upload.md
+topic: File upload
+headings: File upload | Basic example | File validation | Array of files | Multiple files | Any files | No files | Default options | Async configuration | Example
+tags: client, typescript
+hint: Start with "File upload" in techniques/file-upload.md.
+---
+path: techniques/http-module.md
+topic: HTTP module
+headings: HTTP module | Installation | Getting started | Configuration | Async configuration | Using Axios directly | Full example
+tags: api, client, typescript
+hint: Start with "HTTP module" in techniques/http-module.md.
+---
+path: techniques/logger.md
+topic: Logger
+headings: Logger | Basic customization | JSON logging | Using the logger for application logging | Logs with timestamps | Custom implementation | Extend built-in logger | Dependency injection | Injecting a custom logger | Use external logger
+tags: query, typescript, testing
+hint: Start with "Logger" in techniques/logger.md.
+---
+path: techniques/mongo.md
+topic: Mongo
+headings: Mongo | Model injection | Connection | Sessions | Multiple databases | Hooks (middleware) | Plugins | Discriminators | Testing | Async configuration
+tags: api, guide, reference, database, schema, typescript, testing
+hint: Start with "Mongo" in techniques/mongo.md.
+---
+path: techniques/mvc.md
+topic: Model-View-Controller
+headings: Model-View-Controller | Template rendering | Dynamic template rendering | Example | Fastify
+tags: api, guide, typescript
+hint: Start with "Model-View-Controller" in techniques/mvc.md.
+---
+path: techniques/performance.md
+topic: Performance (Fastify)
+headings: Performance (Fastify) | Installation | Adapter | Platform specific packages | Redirect response | Fastify options | Middleware | Route Config | Route Constraints | Example
+tags: guide, reference, server, typescript
+hint: Start with "Performance (Fastify)" in techniques/performance.md.
+---
+path: techniques/queues.md
+topic: Queues
+headings: Queues | BullMQ installation | Named configurations | Producers | Job options | Consumers | Request-scoped consumers | Event listeners | Queue management | Separate processes
+tags: api, guide, reference, database, component, server, client, typescript
+hint: Start with "Queues" in techniques/queues.md.
+---
+path: techniques/serialization.md
+topic: Serialization
+headings: Serialization | Overview | Exclude properties | Expose properties | Transform | Pass options | Transform plain objects | Example | WebSockets and Microservices | Learn more
+tags: query, client, typescript
+hint: Start with "Serialization" in techniques/serialization.md.
+---
+path: techniques/server-sent-events.md
+topic: Server-Sent Events
+headings: Server-Sent Events | Usage | Example
+tags: api, server, client, typescript
+hint: Start with "Server-Sent Events" in techniques/server-sent-events.md.
+---
+path: techniques/sessions.md
+topic: Session
+headings: Session | Use with Express (default) | Use with Fastify
+tags: api, server, client, typescript
+hint: Start with "Session" in techniques/sessions.md.
+---
+path: techniques/sql.md
+topic: Database
+headings: Database | TypeORM Integration | Repository pattern | Relations | Auto-load entities | Separating entity definition | TypeORM Transactions | Subscribers | Migrations | Multiple databases
+tags: api, guide, migration, reference, database, query, schema, server
+hint: Start with "Database" in techniques/sql.md.
+---
+path: techniques/streaming-files.md
+topic: Streaming files
+headings: Streaming files | Streamable File class | Cross-platform support | Example
+tags: api, client
+hint: Start with "Streaming files" in techniques/streaming-files.md.
+---
+path: techniques/task-scheduling.md
+topic: Task scheduling
+headings: Task scheduling | Installation | Declarative cron jobs | Declarative intervals | Declarative timeouts | Dynamic schedule module API | Dynamic cron jobs | Dynamic intervals | Dynamic timeouts | Example
+tags: api, reference, typescript
+hint: Start with "Task scheduling" in techniques/task-scheduling.md.
+---
+path: techniques/validation.md
+topic: Validation
+headings: Validation | Overview | Using the built-in ValidationPipe | Auto-validation | Disable detailed errors | Stripping properties | Transform payload objects | Explicit conversion | Mapped types | Parsing and validating arrays
+tags: api, reference, query, client, typescript
+hint: Start with "Validation" in techniques/validation.md.
+---
+path: techniques/versioning.md
+topic: Versioning
+headings: Versioning | URI Versioning Type | Header Versioning Type | Media Type Versioning Type | Custom Versioning Type | Usage | Controller versions | Route versions | Multiple versions | Version "Neutral"
+tags: typescript
+hint: Start with "Versioning" in techniques/versioning.md.
+---
+path: websockets/adapter.md
+topic: Adapters
+headings: Adapters | Extend socket.io | Ws library | Advanced (custom adapter) | Example
+tags: routing, server, client, typescript
+hint: Start with "Adapters" in websockets/adapter.md.
+---
+path: websockets/exception-filters.md
+topic: Exception filters
+headings: Exception filters | Filters | Inheritance
+tags: client, typescript
+hint: Start with "Exception filters" in websockets/exception-filters.md.
+---
+path: websockets/gateways.md
+topic: Gateways
+headings: Gateways | Installation | Overview | Multiple responses | Asynchronous responses | Lifecycle hooks | Server and Namespace | Example
+tags: api, guide, reference, component, server, client, typescript
+hint: Start with "Gateways" in websockets/gateways.md.
+---
+path: websockets/guards.md
+topic: Guards
+headings: Guards | Binding guards
+tags: client, typescript
+hint: Start with "Guards" in websockets/guards.md.
+---
+path: websockets/interceptors.md
+topic: Interceptors
+headings: Interceptors
+tags: client, typescript
+hint: Start with "Interceptors" in websockets/interceptors.md.
+---
+path: websockets/pipes.md
+topic: Pipes
+headings: Pipes | Binding pipes
+tags: client, typescript
+hint: Start with "Pipes" in websockets/pipes.md.
+</docbrain_index>
