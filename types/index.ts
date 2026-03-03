@@ -81,6 +81,7 @@ export type DenseFileMap = {
   filePath: string;
   topic: string;
   headings: string[];
+  featureRefs: string[];
   tags: string[];
   hint: string;
 };

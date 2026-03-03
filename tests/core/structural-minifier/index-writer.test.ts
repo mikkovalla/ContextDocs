@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { mkdtemp, mkdir } from "node:fs/promises";
+import { mkdir, mkdtemp } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { generateMinifiedIndex } from "../../../core/structural-minifier/index-writer";
@@ -20,6 +20,9 @@ describe("generateMinifiedIndex", () => {
     expect(content).toContain('<docbrain_index package="test-package">');
     expect(content).toContain("path: guide/intro.md");
     expect(content).toContain("headings: Intro | Setup");
+    expect(content).toContain(
+      "features: Intro.intro=>guide/intro.md#intro | Intro.setup=>guide/intro.md#setup",
+    );
     expect(content).toContain("hint:");
   });
 });

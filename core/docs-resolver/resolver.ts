@@ -20,7 +20,12 @@ const PACKAGE_PROFILES: Record<string, PackageProfile> = {
         kind: "github_tree",
         url: "https://github.com/reactjs/react.dev/tree/main/src/content",
         description: "React official docs content",
-        excludePathPatterns: ["^blog/", "^community/", "^errors/", "^warnings/"],
+        excludePathPatterns: [
+          "^blog/",
+          "^community/",
+          "^errors/",
+          "^warnings/",
+        ],
       },
       {
         kind: "sitemap_site",
@@ -79,7 +84,7 @@ const PACKAGE_PROFILES: Record<string, PackageProfile> = {
         kind: "llms_full",
         url: "https://zod.dev/llms-full.txt",
         description: "Zod llms full feed",
-        maxFiles: 1,
+        maxFiles: 140,
       },
       {
         kind: "sitemap_site",
@@ -229,7 +234,10 @@ const PACKAGE_PROFILES: Record<string, PackageProfile> = {
   },
 };
 
-const PRIORITY_ORDER: Record<SourcePriority, ResolvedSourceCandidate["kind"][]> = {
+const PRIORITY_ORDER: Record<
+  SourcePriority,
+  ResolvedSourceCandidate["kind"][]
+> = {
   llms: [
     "llms_txt",
     "llms_full",
@@ -403,7 +411,10 @@ export async function resolveDocsTargets(
     const profile = PACKAGE_PROFILES[normalizedName];
 
     const metadata = await fetchNpmPackageMetadata(dep.name);
-    const fallbackCandidates = fallbackCandidatesFromMetadata(dep.name, metadata);
+    const fallbackCandidates = fallbackCandidatesFromMetadata(
+      dep.name,
+      metadata,
+    );
 
     const candidates = uniqCandidates([
       ...(profile?.candidates ?? []).map((candidate) => ({

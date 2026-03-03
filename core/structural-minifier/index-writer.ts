@@ -28,13 +28,17 @@ async function walkDocs(dir: string, out: string[] = []): Promise<string[]> {
 }
 
 function formatEntry(entry: DenseFileMap): string {
-  const headings = entry.headings.length > 0 ? entry.headings.join(" | ") : "(none)";
+  const headings =
+    entry.headings.length > 0 ? entry.headings.join(" | ") : "(none)";
+  const featureRefs =
+    entry.featureRefs.length > 0 ? entry.featureRefs.join(" | ") : "(none)";
   const tags = entry.tags.length > 0 ? entry.tags.join(", ") : "(none)";
 
   return [
     `path: ${entry.filePath}`,
     `topic: ${entry.topic}`,
     `headings: ${headings}`,
+    `features: ${featureRefs}`,
     `tags: ${tags}`,
     `hint: ${entry.hint}`,
   ].join("\n");
@@ -57,8 +61,10 @@ export async function generateMinifiedIndex(
 
   let output = "";
   output += `<docbrain_index package=\"${packageName}\">\n`;
-  output += "instruction: Read path entries, then open the file with the strongest topic/headings match.\n";
-  output += "instruction: Prefer API/reference pages for exact syntax and behavior.\n\n";
+  output +=
+    "instruction: Read path entries, then open the file with the strongest topic/headings match.\n";
+  output +=
+    "instruction: Prefer API/reference pages for exact syntax and behavior.\n\n";
 
   for (const entry of map) {
     output += "---\n";
