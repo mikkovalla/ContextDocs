@@ -32,6 +32,13 @@ function formatEntry(entry: DenseFileMap): string {
     entry.headings.length > 0 ? entry.headings.join(" | ") : "(none)";
   const featureRefs =
     entry.featureRefs.length > 0 ? entry.featureRefs.join(" | ") : "(none)";
+  const pathAnchors =
+    entry.featureRefs.length > 0
+      ? entry.featureRefs
+          .map((ref) => ref.split("=>")[1]?.trim())
+          .filter((value): value is string => Boolean(value))
+          .join(" | ")
+      : "(none)";
   const tags = entry.tags.length > 0 ? entry.tags.join(", ") : "(none)";
 
   return [
@@ -39,6 +46,7 @@ function formatEntry(entry: DenseFileMap): string {
     `topic: ${entry.topic}`,
     `headings: ${headings}`,
     `features: ${featureRefs}`,
+    `path/anchor: ${pathAnchors}`,
     `tags: ${tags}`,
     `hint: ${entry.hint}`,
   ].join("\n");
@@ -49,9 +57,16 @@ export async function generateMinifiedIndex(
   packageName: string,
 ): Promise<string> {
   const docFiles = await walkDocs(docsDir);
+  const hasSplitSections = docFiles.some((path) =>
+    /(^|\/)sections\/.+\.(md|mdx|txt)$/i.test(path),
+  );
+  const includedFiles = hasSplitSections
+    ? docFiles.filter((path) => !/(^|\/)llms-full\.md$/i.test(path))
+    : docFiles;
+
   const map: DenseFileMap[] = [];
 
-  for (const filePath of docFiles) {
+  for (const filePath of includedFiles) {
     const content = await readFile(filePath, "utf8");
     const rel = relative(docsDir, filePath);
     map.push(await extractDenseMap(rel, content));

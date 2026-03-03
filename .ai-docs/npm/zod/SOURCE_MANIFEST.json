@@ -6,14 +6,14 @@
     "kind": "llms_full",
     "url": "https://zod.dev/llms-full.txt",
     "description": "Zod llms full feed",
-    "maxFiles": 1
+    "maxFiles": 140
   },
   "sourceCandidates": [
     {
       "kind": "llms_full",
       "url": "https://zod.dev/llms-full.txt",
       "description": "Zod llms full feed",
-      "maxFiles": 1
+      "maxFiles": 140
     },
     {
       "kind": "sitemap_site",
@@ -53,9 +53,9 @@
       "kind": "llms_full",
       "url": "https://zod.dev/llms-full.txt",
       "success": true,
-      "fileCount": 1
+      "fileCount": 18
     }
   ],
-  "fetchedFileCount": 1,
-  "generatedAt": "2026-03-03T17:42:31.747Z"
+  "fetchedFileCount": 18,
+  "generatedAt": "2026-03-03T22:06:38.562Z"
 }

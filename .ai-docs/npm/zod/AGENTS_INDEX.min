@@ -3,9 +3,147 @@ instruction: Read path entries, then open the file with the strongest topic/head
 instruction: Prefer API/reference pages for exact syntax and behavior.
 
 ---
-path: llms-full.md
+path: sections/01-zod.md
 topic: Zod
-headings: Zod | Defining schemas | Primitives | Coercion | Literals | Strings | String formats | Emails | UUIDs | URLs
-tags: api, guide, migration, reference, database, query, schema, component
-hint: Start with "Zod" in llms-full.md.
+headings: Zod
+features: Zod.zod=>sections/01-zod.md#zod
+path/anchor: sections/01-zod.md#zod
+tags: api, schema, typescript
+hint: Start with "Zod" in sections/01-zod.md.
+---
+path: sections/02-defining-schemas.md
+topic: Defining schemas
+headings: Defining schemas | Primitives | Coercion | Literals | Strings | String formats | Emails | UUIDs | URLs | ISO datetimes
+features: Defining_schemas.defining_schemas=>sections/02-defining-schemas.md#defining-schemas | Defining_schemas.primitives=>sections/02-defining-schemas.md#primitives | Defining_schemas.coercion=>sections/02-defining-schemas.md#coercion | Defining_schemas.literals=>sections/02-defining-schemas.md#literals | Defining_schemas.strings=>sections/02-defining-schemas.md#strings | Defining_schemas.string_formats=>sections/02-defining-schemas.md#string-formats | Defining_schemas.emails=>sections/02-defining-schemas.md#emails | Defining_schemas.uuids=>sections/02-defining-schemas.md#uuids | Defining_schemas.urls=>sections/02-defining-schemas.md#urls | Defining_schemas.iso_datetimes=>sections/02-defining-schemas.md#iso-datetimes
+path/anchor: sections/02-defining-schemas.md#defining-schemas | sections/02-defining-schemas.md#primitives | sections/02-defining-schemas.md#coercion | sections/02-defining-schemas.md#literals | sections/02-defining-schemas.md#strings | sections/02-defining-schemas.md#string-formats | sections/02-defining-schemas.md#emails | sections/02-defining-schemas.md#uuids | sections/02-defining-schemas.md#urls | sections/02-defining-schemas.md#iso-datetimes
+tags: api, reference, database, schema, component, routing, typescript
+hint: Start with "Defining schemas" in sections/02-defining-schemas.md.
+---
+path: sections/03-basic-usage.md
+topic: Basic usage
+headings: Basic usage | Defining a schema | Parsing data | Handling errors | Inferring types
+features: Basic_usage.basic_usage=>sections/03-basic-usage.md#basic-usage | Basic_usage.defining_a_schema=>sections/03-basic-usage.md#defining-a-schema | Basic_usage.parsing_data=>sections/03-basic-usage.md#parsing-data | Basic_usage.handling_errors=>sections/03-basic-usage.md#handling-errors | Basic_usage.inferring_types=>sections/03-basic-usage.md#inferring-types
+path/anchor: sections/03-basic-usage.md#basic-usage | sections/03-basic-usage.md#defining-a-schema | sections/03-basic-usage.md#parsing-data | sections/03-basic-usage.md#handling-errors | sections/03-basic-usage.md#inferring-types
+tags: api, guide, schema, typescript
+hint: Start with "Basic usage" in sections/03-basic-usage.md.
+---
+path: sections/04-codecs.md
+topic: Codecs
+headings: Codecs | Composability | Type-safe inputs | Async and safe variants | How encoding works | Pipes | Refinements | Defaults and prefaults | Catch | Stringbool
+features: Codecs.codecs=>sections/04-codecs.md#codecs | Codecs.composability=>sections/04-codecs.md#composability | Codecs.type_safe_inputs=>sections/04-codecs.md#type-safe-inputs | Codecs.async_and_safe_variants=>sections/04-codecs.md#async-and-safe-variants | Codecs.how_encoding_works=>sections/04-codecs.md#how-encoding-works | Codecs.pipes=>sections/04-codecs.md#pipes | Codecs.refinements=>sections/04-codecs.md#refinements | Codecs.defaults_and_prefaults=>sections/04-codecs.md#defaults-and-prefaults | Codecs.catch=>sections/04-codecs.md#catch | Codecs.stringbool=>sections/04-codecs.md#stringbool
+path/anchor: sections/04-codecs.md#codecs | sections/04-codecs.md#composability | sections/04-codecs.md#type-safe-inputs | sections/04-codecs.md#async-and-safe-variants | sections/04-codecs.md#how-encoding-works | sections/04-codecs.md#pipes | sections/04-codecs.md#refinements | sections/04-codecs.md#defaults-and-prefaults | sections/04-codecs.md#catch | sections/04-codecs.md#stringbool
+tags: api, schema, component, server, client, typescript
+hint: Start with "Codecs" in sections/04-codecs.md.
+---
+path: sections/05-ecosystem.md
+topic: Ecosystem
+headings: Ecosystem | Resources | API Libraries | Form Integrations | Zod to X | X to Zod | Mocking Libraries | Powered by Zod | Zod Utilities
+features: Ecosystem.ecosystem=>sections/05-ecosystem.md#ecosystem | Ecosystem.resources=>sections/05-ecosystem.md#resources | Ecosystem.api_libraries=>sections/05-ecosystem.md#api-libraries | Ecosystem.form_integrations=>sections/05-ecosystem.md#form-integrations | Ecosystem.zod_to_x=>sections/05-ecosystem.md#zod-to-x | Ecosystem.x_to_zod=>sections/05-ecosystem.md#x-to-zod | Ecosystem.mocking_libraries=>sections/05-ecosystem.md#mocking-libraries | Ecosystem.powered_by_zod=>sections/05-ecosystem.md#powered-by-zod | Ecosystem.zod_utilities=>sections/05-ecosystem.md#zod-utilities
+path/anchor: sections/05-ecosystem.md#ecosystem | sections/05-ecosystem.md#resources | sections/05-ecosystem.md#api-libraries | sections/05-ecosystem.md#form-integrations | sections/05-ecosystem.md#zod-to-x | sections/05-ecosystem.md#x-to-zod | sections/05-ecosystem.md#mocking-libraries | sections/05-ecosystem.md#powered-by-zod | sections/05-ecosystem.md#zod-utilities
+tags: api, component, typescript
+hint: Start with "Ecosystem" in sections/05-ecosystem.md.
+---
+path: sections/06-customizing-errors.md
+topic: Customizing errors
+headings: Customizing errors | The `error` param | Per-parse error customization | Include input in issues | Global error customization | Internationalization | Locales | Error precedence
+features: Customizing_errors.customizing_errors=>sections/06-customizing-errors.md#customizing-errors | Customizing_errors.the_error_param=>sections/06-customizing-errors.md#the-error-param | Customizing_errors.per_parse_error_customization=>sections/06-customizing-errors.md#per-parse-error-customization | Customizing_errors.include_input_in_issues=>sections/06-customizing-errors.md#include-input-in-issues | Customizing_errors.global_error_customization=>sections/06-customizing-errors.md#global-error-customization | Customizing_errors.internationalization=>sections/06-customizing-errors.md#internationalization | Customizing_errors.locales=>sections/06-customizing-errors.md#locales | Customizing_errors.error_precedence=>sections/06-customizing-errors.md#error-precedence
+path/anchor: sections/06-customizing-errors.md#customizing-errors | sections/06-customizing-errors.md#the-error-param | sections/06-customizing-errors.md#per-parse-error-customization | sections/06-customizing-errors.md#include-input-in-issues | sections/06-customizing-errors.md#global-error-customization | sections/06-customizing-errors.md#internationalization | sections/06-customizing-errors.md#locales | sections/06-customizing-errors.md#error-precedence
+tags: api, reference, schema, typescript
+hint: Start with "Customizing errors" in sections/06-customizing-errors.md.
+---
+path: sections/07-formatting-errors.md
+topic: Formatting errors
+headings: Formatting errors | `z.treeifyError()` | `z.prettifyError()` | `z.formatError()` | `z.flattenError()`
+features: Formatting_errors.formatting_errors=>sections/07-formatting-errors.md#formatting-errors | Formatting_errors.z_treeifyerror=>sections/07-formatting-errors.md#ztreeifyerror | Formatting_errors.z_prettifyerror=>sections/07-formatting-errors.md#zprettifyerror | Formatting_errors.z_formaterror=>sections/07-formatting-errors.md#zformaterror | Formatting_errors.z_flattenerror=>sections/07-formatting-errors.md#zflattenerror
+path/anchor: sections/07-formatting-errors.md#formatting-errors | sections/07-formatting-errors.md#ztreeifyerror | sections/07-formatting-errors.md#zprettifyerror | sections/07-formatting-errors.md#zformaterror | sections/07-formatting-errors.md#zflattenerror
+tags: schema
+hint: Start with "Formatting errors" in sections/07-formatting-errors.md.
+---
+path: sections/08-intro.md
+topic: Intro
+headings: Intro | Zod | Introduction | Features | Installation | Requirements | `"strict"` | Ecosystem | Sponsors | Platinum
+features: Intro.intro=>sections/08-intro.md#intro | Intro.zod=>sections/08-intro.md#zod | Intro.introduction=>sections/08-intro.md#introduction | Intro.features=>sections/08-intro.md#features | Intro.installation=>sections/08-intro.md#installation | Intro.requirements=>sections/08-intro.md#requirements | Intro.strict=>sections/08-intro.md#strict | Intro.ecosystem=>sections/08-intro.md#ecosystem | Intro.sponsors=>sections/08-intro.md#sponsors | Intro.platinum=>sections/08-intro.md#platinum
+path/anchor: sections/08-intro.md#intro | sections/08-intro.md#zod | sections/08-intro.md#introduction | sections/08-intro.md#features | sections/08-intro.md#installation | sections/08-intro.md#requirements | sections/08-intro.md#strict | sections/08-intro.md#ecosystem | sections/08-intro.md#sponsors | sections/08-intro.md#platinum
+tags: api, query, schema, server, typescript
+hint: Start with "Intro" in sections/08-intro.md.
+---
+path: sections/09-json-schema.md
+topic: JSON Schema
+headings: JSON Schema | `z.fromJSONSchema()` | `z.toJSONSchema()` | `io` | `target` | `metadata` | `unrepresentable` | `cycles` | `reused` | `override`
+features: Json_schema.json_schema=>sections/09-json-schema.md#json-schema | Json_schema.z_fromjsonschema=>sections/09-json-schema.md#zfromjsonschema | Json_schema.z_tojsonschema=>sections/09-json-schema.md#ztojsonschema | Json_schema.io=>sections/09-json-schema.md#io | Json_schema.target=>sections/09-json-schema.md#target | Json_schema.metadata=>sections/09-json-schema.md#metadata | Json_schema.unrepresentable=>sections/09-json-schema.md#unrepresentable | Json_schema.cycles=>sections/09-json-schema.md#cycles | Json_schema.reused=>sections/09-json-schema.md#reused | Json_schema.override=>sections/09-json-schema.md#override
+path/anchor: sections/09-json-schema.md#json-schema | sections/09-json-schema.md#zfromjsonschema | sections/09-json-schema.md#ztojsonschema | sections/09-json-schema.md#io | sections/09-json-schema.md#target | sections/09-json-schema.md#metadata | sections/09-json-schema.md#unrepresentable | sections/09-json-schema.md#cycles | sections/09-json-schema.md#reused | sections/09-json-schema.md#override
+tags: api, guide, reference, schema, server
+hint: Start with "JSON Schema" in sections/09-json-schema.md.
+---
+path: sections/10-for-library-authors.md
+topic: For library authors
+headings: For library authors | Do I need to depend on Zod? | How to configure peer dependencies? | How to support Zod 4? | Do I need to publish a new major version? | How to support Zod 3 and Zod 4 simultaneously? | How to support Zod and Zod Mini simultaneously? | How to accept user-defined schemas?
+features: For_library_authors.for_library_authors=>sections/10-for-library-authors.md#for-library-authors | For_library_authors.do_i_need_to_depend_on_zod=>sections/10-for-library-authors.md#do-i-need-to-depend-on-zod | For_library_authors.how_to_configure_peer_dependencies=>sections/10-for-library-authors.md#how-to-configure-peer-dependencies | For_library_authors.how_to_support_zod_4=>sections/10-for-library-authors.md#how-to-support-zod-4 | For_library_authors.do_i_need_to_publish_a_new_major_version=>sections/10-for-library-authors.md#do-i-need-to-publish-a-new-major-version | For_library_authors.how_to_support_zod_3_and_zod_4_simultaneously=>sections/10-for-library-authors.md#how-to-support-zod-3-and-zod-4-simultaneously | For_library_authors.how_to_support_zod_and_zod_mini_simultaneously=>sections/10-for-library-authors.md#how-to-support-zod-and-zod-mini-simultaneously | For_library_authors.how_to_accept_user_defined_schemas=>sections/10-for-library-authors.md#how-to-accept-user-defined-schemas
+path/anchor: sections/10-for-library-authors.md#for-library-authors | sections/10-for-library-authors.md#do-i-need-to-depend-on-zod | sections/10-for-library-authors.md#how-to-configure-peer-dependencies | sections/10-for-library-authors.md#how-to-support-zod-4 | sections/10-for-library-authors.md#do-i-need-to-publish-a-new-major-version | sections/10-for-library-authors.md#how-to-support-zod-3-and-zod-4-simultaneously | sections/10-for-library-authors.md#how-to-support-zod-and-zod-mini-simultaneously | sections/10-for-library-authors.md#how-to-accept-user-defined-schemas
+tags: reference, schema, typescript
+hint: Start with "For library authors" in sections/10-for-library-authors.md.
+---
+path: sections/11-metadata-and-registries.md
+topic: Metadata and registries
+headings: Metadata and registries | Registries | `.register()` | Metadata | `z.globalRegistry` | `.meta()` | `.describe()` | Custom registries | Referencing inferred types | Constraining schema types
+features: Metadata_and_registries.metadata_and_registries=>sections/11-metadata-and-registries.md#metadata-and-registries | Metadata_and_registries.registries=>sections/11-metadata-and-registries.md#registries | Metadata_and_registries.register=>sections/11-metadata-and-registries.md#register | Metadata_and_registries.metadata=>sections/11-metadata-and-registries.md#metadata | Metadata_and_registries.z_globalregistry=>sections/11-metadata-and-registries.md#zglobalregistry | Metadata_and_registries.meta=>sections/11-metadata-and-registries.md#meta | Metadata_and_registries.describe=>sections/11-metadata-and-registries.md#describe | Metadata_and_registries.custom_registries=>sections/11-metadata-and-registries.md#custom-registries | Metadata_and_registries.referencing_inferred_types=>sections/11-metadata-and-registries.md#referencing-inferred-types | Metadata_and_registries.constraining_schema_types=>sections/11-metadata-and-registries.md#constraining-schema-types
+path/anchor: sections/11-metadata-and-registries.md#metadata-and-registries | sections/11-metadata-and-registries.md#registries | sections/11-metadata-and-registries.md#register | sections/11-metadata-and-registries.md#metadata | sections/11-metadata-and-registries.md#zglobalregistry | sections/11-metadata-and-registries.md#meta | sections/11-metadata-and-registries.md#describe | sections/11-metadata-and-registries.md#custom-registries | sections/11-metadata-and-registries.md#referencing-inferred-types | sections/11-metadata-and-registries.md#constraining-schema-types
+tags: reference, schema, typescript
+hint: Start with "Metadata and registries" in sections/11-metadata-and-registries.md.
+---
+path: sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md
+topic: Joining Clerk as an OSS Fellow to work on Zod 4
+headings: Joining Clerk as an OSS Fellow to work on Zod 4 | On deck: Zod 4 | Zod's current funding story | The Clerk fellowship | OSS, funding models, and trying new things
+features: Joining_clerk_as_an_oss_fellow_to_work_on_zod_4.joining_clerk_as_an_oss_fellow_to_work_on_zod_4=>sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#joining-clerk-as-an-oss-fellow-to-work-on-zod-4 | Joining_clerk_as_an_oss_fellow_to_work_on_zod_4.on_deck_zod_4=>sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#on-deck-zod-4 | Joining_clerk_as_an_oss_fellow_to_work_on_zod_4.zod_s_current_funding_story=>sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#zods-current-funding-story | Joining_clerk_as_an_oss_fellow_to_work_on_zod_4.the_clerk_fellowship=>sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#the-clerk-fellowship | Joining_clerk_as_an_oss_fellow_to_work_on_zod_4.oss_funding_models_and_trying_new_things=>sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#oss-funding-models-and-trying-new-things
+path/anchor: sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#joining-clerk-as-an-oss-fellow-to-work-on-zod-4 | sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#on-deck-zod-4 | sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#zods-current-funding-story | sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#the-clerk-fellowship | sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md#oss-funding-models-and-trying-new-things
+tags: api, server, typescript
+hint: Start with "Joining Clerk as an OSS Fellow to work on Zod 4" in sections/12-joining-clerk-as-an-oss-fellow-to-work-on-zod-4.md.
+---
+path: sections/13-zod-core.md
+topic: Zod Core
+headings: Zod Core | Schemas | Internals | Parsing | Checks | Errors | Issues
+features: Zod_core.zod_core=>sections/13-zod-core.md#zod-core | Zod_core.schemas=>sections/13-zod-core.md#schemas | Zod_core.internals=>sections/13-zod-core.md#internals | Zod_core.parsing=>sections/13-zod-core.md#parsing | Zod_core.checks=>sections/13-zod-core.md#checks | Zod_core.errors=>sections/13-zod-core.md#errors | Zod_core.issues=>sections/13-zod-core.md#issues
+path/anchor: sections/13-zod-core.md#zod-core | sections/13-zod-core.md#schemas | sections/13-zod-core.md#internals | sections/13-zod-core.md#parsing | sections/13-zod-core.md#checks | sections/13-zod-core.md#errors | sections/13-zod-core.md#issues
+tags: schema, testing
+hint: Start with "Zod Core" in sections/13-zod-core.md.
+---
+path: sections/14-zod-mini.md
+topic: Zod Mini
+headings: Zod Mini | Tree-shaking | When (not) to use Zod Mini | DX | Backend development | Internet speed | `ZodMiniType` | `.parse` | `.check()` | `.register()`
+features: Zod_mini.zod_mini=>sections/14-zod-mini.md#zod-mini | Zod_mini.tree_shaking=>sections/14-zod-mini.md#tree-shaking | Zod_mini.when_not_to_use_zod_mini=>sections/14-zod-mini.md#when-not-to-use-zod-mini | Zod_mini.dx=>sections/14-zod-mini.md#dx | Zod_mini.backend_development=>sections/14-zod-mini.md#backend-development | Zod_mini.internet_speed=>sections/14-zod-mini.md#internet-speed | Zod_mini.zodminitype=>sections/14-zod-mini.md#zodminitype | Zod_mini.parse=>sections/14-zod-mini.md#parse | Zod_mini.check=>sections/14-zod-mini.md#check | Zod_mini.register=>sections/14-zod-mini.md#register
+path/anchor: sections/14-zod-mini.md#zod-mini | sections/14-zod-mini.md#tree-shaking | sections/14-zod-mini.md#when-not-to-use-zod-mini | sections/14-zod-mini.md#dx | sections/14-zod-mini.md#backend-development | sections/14-zod-mini.md#internet-speed | sections/14-zod-mini.md#zodminitype | sections/14-zod-mini.md#parse | sections/14-zod-mini.md#check | sections/14-zod-mini.md#register
+tags: api, reference, schema, server, typescript
+hint: Start with "Zod Mini" in sections/14-zod-mini.md.
+---
+path: sections/15-zod-2.md
+topic: Zod
+headings: Zod
+features: Zod.zod=>sections/15-zod-2.md#zod
+path/anchor: sections/15-zod-2.md#zod
+tags: api, schema, typescript
+hint: Start with "Zod" in sections/15-zod-2.md.
+---
+path: sections/16-migration-guide.md
+topic: Migration guide
+headings: Migration guide | Error customization | deprecates `message` parameter | drops `invalid_type_error` and `required_error` | drops `errorMap` | `ZodError` | changes to `.message` | updates issue formats | changes error map precedence | deprecates `.format()`
+features: Migration_guide.migration_guide=>sections/16-migration-guide.md#migration-guide | Migration_guide.error_customization=>sections/16-migration-guide.md#error-customization | Migration_guide.deprecates_message_parameter=>sections/16-migration-guide.md#deprecates-message-parameter | Migration_guide.drops_invalid_type_error_and_required_error=>sections/16-migration-guide.md#drops-invalidtypeerror-and-requirederror | Migration_guide.drops_errormap=>sections/16-migration-guide.md#drops-errormap | Migration_guide.zoderror=>sections/16-migration-guide.md#zoderror | Migration_guide.changes_to_message=>sections/16-migration-guide.md#changes-to-message | Migration_guide.updates_issue_formats=>sections/16-migration-guide.md#updates-issue-formats | Migration_guide.changes_error_map_precedence=>sections/16-migration-guide.md#changes-error-map-precedence | Migration_guide.deprecates_format=>sections/16-migration-guide.md#deprecates-format
+path/anchor: sections/16-migration-guide.md#migration-guide | sections/16-migration-guide.md#error-customization | sections/16-migration-guide.md#deprecates-message-parameter | sections/16-migration-guide.md#drops-invalidtypeerror-and-requirederror | sections/16-migration-guide.md#drops-errormap | sections/16-migration-guide.md#zoderror | sections/16-migration-guide.md#changes-to-message | sections/16-migration-guide.md#updates-issue-formats | sections/16-migration-guide.md#changes-error-map-precedence | sections/16-migration-guide.md#deprecates-format
+tags: api, guide, migration, schema, typescript
+hint: Start with "Migration guide" in sections/16-migration-guide.md.
+---
+path: sections/17-release-notes.md
+topic: Release notes
+headings: Release notes | Versioning | Why a new major version? | Benchmarks | 14x faster string parsing | 7x faster array parsing | 6.5x faster object parsing | 100x reduction in `tsc` instantiations | 2x reduction in core bundle size | Introducing Zod Mini
+features: Release_notes.release_notes=>sections/17-release-notes.md#release-notes | Release_notes.versioning=>sections/17-release-notes.md#versioning | Release_notes.why_a_new_major_version=>sections/17-release-notes.md#why-a-new-major-version | Release_notes.benchmarks=>sections/17-release-notes.md#benchmarks | Release_notes.14x_faster_string_parsing=>sections/17-release-notes.md#14x-faster-string-parsing | Release_notes.7x_faster_array_parsing=>sections/17-release-notes.md#7x-faster-array-parsing | Release_notes.6_5x_faster_object_parsing=>sections/17-release-notes.md#65x-faster-object-parsing | Release_notes.100x_reduction_in_tsc_instantiations=>sections/17-release-notes.md#100x-reduction-in-tsc-instantiations | Release_notes.2x_reduction_in_core_bundle_size=>sections/17-release-notes.md#2x-reduction-in-core-bundle-size | Release_notes.introducing_zod_mini=>sections/17-release-notes.md#introducing-zod-mini
+path/anchor: sections/17-release-notes.md#release-notes | sections/17-release-notes.md#versioning | sections/17-release-notes.md#why-a-new-major-version | sections/17-release-notes.md#benchmarks | sections/17-release-notes.md#14x-faster-string-parsing | sections/17-release-notes.md#7x-faster-array-parsing | sections/17-release-notes.md#65x-faster-object-parsing | sections/17-release-notes.md#100x-reduction-in-tsc-instantiations | sections/17-release-notes.md#2x-reduction-in-core-bundle-size | sections/17-release-notes.md#introducing-zod-mini
+tags: api, guide, migration, schema, typescript
+hint: Start with "Release notes" in sections/17-release-notes.md.
+---
+path: sections/18-versioning.md
+topic: Versioning
+headings: Versioning | **Update — July 8th, 2025** | Versioning in Zod 4 | Why? | Why can't libraries just support v3 and v4 simultaneously?
+features: Versioning.versioning=>sections/18-versioning.md#versioning | Versioning.update_july_8th_2025=>sections/18-versioning.md#update-july-8th-2025 | Versioning.versioning_in_zod_4=>sections/18-versioning.md#versioning-in-zod-4 | Versioning.why=>sections/18-versioning.md#why | Versioning.why_can_t_libraries_just_support_v3_and_v4_simultaneously=>sections/18-versioning.md#why-cant-libraries-just-support-v3-and-v4-simultaneously
+path/anchor: sections/18-versioning.md#versioning | sections/18-versioning.md#update-july-8th-2025 | sections/18-versioning.md#versioning-in-zod-4 | sections/18-versioning.md#why | sections/18-versioning.md#why-cant-libraries-just-support-v3-and-v4-simultaneously
+tags: api, guide, migration, reference, schema
+hint: Start with "Versioning" in sections/18-versioning.md.
 </docbrain_index>

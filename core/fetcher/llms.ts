@@ -77,7 +77,7 @@ function isAllowedUrl(
     const parsed = new URL(url);
     const allowedHosts = candidate.allowedHostnames ?? [baseHost];
 
-    if (!allowedHosts.some((host) => parsed.hostname === host)) {
+    if (!allowedHosts.includes(parsed.hostname)) {
       return false;
     }
 
@@ -142,10 +142,10 @@ function parseLlmsIndexLinks(
 function slugifyHeading(heading: string): string {
   const cleaned = heading
     .toLowerCase()
-    .replace(/<[^>]+>/g, "")
-    .replace(/`+/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replaceAll(/<[^>]+>/g, "")
+    .replaceAll(/`+/g, "")
+    .replaceAll(/[^a-z0-9]+/g, "-")
+    .replaceAll(/^-+|-+$/g, "");
 
   return cleaned || "section";
 }
@@ -187,6 +187,7 @@ export function splitLlmsFullMarkdown(
   content: string,
   sourceUrl: string,
   maxSections = MAX_SPLIT_SECTIONS,
+  includeFullSnapshot = true,
 ): RawDocFile[] {
   const lines = content.replace(/^\uFEFF/, "").split("\n");
   const boundaries = collectSectionBoundaries(lines);
@@ -202,7 +203,7 @@ export function splitLlmsFullMarkdown(
     return [fullSnapshot];
   }
 
-  const files: RawDocFile[] = [fullSnapshot];
+  const files: RawDocFile[] = includeFullSnapshot ? [fullSnapshot] : [];
   const usedNames = new Map<string, number>();
   const preamble = lines.slice(0, boundaries[0].index).join("\n").trim();
 
@@ -256,6 +257,7 @@ export async function fetchFromLlms(
       llmsContent,
       candidate.url,
       candidate.maxFiles ?? MAX_SPLIT_SECTIONS,
+      false,
     );
   }
 
