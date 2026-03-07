@@ -63,13 +63,15 @@ For each target package, ContextDocs:
 4. Normalizes content to markdown.
 5. Splits monolithic `llms-full` sources into logical `sections/*.md` files when possible.
 6. Builds a compact `AGENTS_INDEX.min` with:
-  - base `path`
-  - `topic`
-  - `headings`
-  - `features` mapping (`Feature.key=>path#anchor`)
-  - `path/anchor` pipe-delimited anchors
+
+- base `path`
+- `topic`
+- `headings`
+- `features` mapping (`Feature.key=>path#anchor`)
+- `path/anchor` pipe-delimited anchors
+
 7. Writes `SOURCE_MANIFEST.json` with provenance, ranking reasons, and fetch attempts.
-8. Updates the root `AGENTS.md` index block.
+2. Updates the root `AGENTS.md` index block.
 
 ## Output Layout
 

@@ -112,17 +112,17 @@ function indentLines(value: string, prefix: string): string {
 function renderTable(node: any, $: cheerio.CheerioAPI): string {
   const rows = $(node)
     .find("tr")
-    .map((_, row) =>
+    .toArray()
+    .map((row) =>
       $(row)
         .children("th, td")
-        .map((__, cell) =>
+        .toArray()
+        .map((cell) =>
           escapeTableCell(
             renderInlineChildren($(cell).contents().toArray(), $) || " ",
           ),
-        )
-        .get(),
+        ),
     )
-    .get()
     .filter((row) => row.length > 0);
 
   if (rows.length === 0) {

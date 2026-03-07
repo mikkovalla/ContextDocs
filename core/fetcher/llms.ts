@@ -117,6 +117,39 @@ function isAllowedUrl(
   }
 }
 
+
+function normalizeComparableUrl(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    parsed.hash = "";
+    if (
+      (parsed.protocol === "https:" && parsed.port === "443") ||
+      (parsed.protocol === "http:" && parsed.port === "80")
+    ) {
+      parsed.port = "";
+    }
+    return parsed.toString().replace(/\/$/, "");
+  } catch {
+    return null;
+  }
+}
+
+function isLlmsSelfOrRootUrl(url: string, sourceUrl: string): boolean {
+  try {
+    const parsed = new URL(url);
+    const normalizedPath = parsed.pathname.replace(/\/+$/, "");
+    const sourceComparable = normalizeComparableUrl(sourceUrl);
+    const targetComparable = normalizeComparableUrl(url);
+
+    if (sourceComparable && targetComparable && sourceComparable === targetComparable) {
+      return true;
+    }
+
+    return normalizedPath.length === 0;
+  } catch {
+    return false;
+  }
+}
 function parseLlmsIndexLinks(
   content: string,
   sourceUrl: string,
@@ -130,7 +163,10 @@ function parseLlmsIndexLinks(
     if (!trimmed || trimmed.startsWith("#")) continue;
 
     for (const link of extractLinksFromLine(base, trimmed)) {
-      if (isAllowedUrl(link, base.hostname, candidate)) {
+      if (
+        isAllowedUrl(link, base.hostname, candidate) &&
+        !isLlmsSelfOrRootUrl(link, sourceUrl)
+      ) {
         links.add(link);
       }
     }

@@ -177,6 +177,8 @@ export const PACKAGE_PROFILES: Record<string, PackageProfile> = {
         url: "https://daisyui.com/llms.txt",
         description: "daisyUI llms index",
         docStability: "stable",
+        includePathPrefixes: ["components", "docs"],
+        excludePathPatterns: ["(^|/)editor/?$", "(^|/)theme-generator/?$"],
         maxFiles: 120,
       },
       {
