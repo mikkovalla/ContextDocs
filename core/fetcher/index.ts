@@ -1,4 +1,9 @@
-import { FetchResult, RawDocFile, ResolvedSourceCandidate, ResolvedTarget } from "../../types";
+import {
+  FetchResult,
+  RawDocFile,
+  ResolvedSourceCandidate,
+  ResolvedTarget,
+} from "../../types";
 import { fetchFromSitemapSite } from "./crawler";
 import { applyPathFilters, enforceMaxFiles } from "./filters";
 import { fetchFromGitHubTree } from "./github";
@@ -45,15 +50,35 @@ const LOW_SIGNAL_PATH_PATTERNS = [
 function isLowSignalPath(path: string): boolean {
   return LOW_SIGNAL_PATH_PATTERNS.some((pattern) => pattern.test(path));
 }
+function previewContent(file: RawDocFile): string {
+  if (file.contentType === "html") {
+    return file.content
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 6000)
+      .toLowerCase();
+  }
+
+  return file.content.slice(0, 6000).toLowerCase();
+}
 
 function hasCoreDocSignals(file: RawDocFile): boolean {
-  const preview = file.content.slice(0, 6000).toLowerCase();
+  const preview = previewContent(file);
+
+  if (
+    file.contentType === "html" &&
+    /<(h1|h2|article|main|pre|code|table)\b/i.test(file.content)
+  ) {
+    return true;
+  }
 
   return (
     /\n#{1,3}\s+(api|reference|usage|getting started|installation|guide)\b/i.test(
       preview,
-    ) ||
-    /\b(api|reference|usage|installation|guide)\b/i.test(file.relativePath)
+    ) || /\b(api|reference|usage|installation|guide)\b/i.test(file.relativePath)
   );
 }
 
@@ -68,7 +93,12 @@ function qualityGatePasses(
 
   const filtered = files
     .filter((file) => !isLowSignalPath(file.relativePath))
-    .filter((file) => !/(discord|youtube|twitter|x\\.com|linkedin|reddit)/i.test(file.sourceUrl));
+    .filter(
+      (file) =>
+        !/(discord|youtube|twitter|x\\.com|linkedin|reddit)/i.test(
+          file.sourceUrl,
+        ),
+    );
 
   if (filtered.length === 0) {
     return {
@@ -99,11 +129,15 @@ function qualityGatePasses(
     return {
       ok: filtered.length > 0,
       filteredFiles: filtered,
-      reason: filtered.length > 0 ? undefined : "llms_full returned empty content.",
+      reason:
+        filtered.length > 0 ? undefined : "llms_full returned empty content.",
     };
   }
 
-  if (target.packageName.startsWith("@types/") && candidate.kind === "github_tree") {
+  if (
+    target.packageName.startsWith("@types/") &&
+    candidate.kind === "github_tree"
+  ) {
     return {
       ok: false,
       filteredFiles: [],
@@ -120,7 +154,9 @@ function qualityGatePasses(
   }
 
   if (candidate.kind === "llms_txt") {
-    const expandedDocs = filtered.filter((file) => !/llms-index\.txt$/i.test(file.relativePath));
+    const expandedDocs = filtered.filter(
+      (file) => !/llms-(index|full)\.(txt|md)$/i.test(file.relativePath),
+    );
     if (expandedDocs.length === 0) {
       return {
         ok: false,

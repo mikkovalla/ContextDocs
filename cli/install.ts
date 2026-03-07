@@ -32,8 +32,65 @@ type InstallOptions = {
   nonInteractive?: boolean;
   packages?: string;
   sourcePriority?: SourcePriority;
-  npmOnly?: boolean;
 };
+
+function sourceKey(candidate: { kind: string; url: string }): string {
+  return `${candidate.kind}|${candidate.url}`;
+}
+
+function buildSelectedSourceReason(
+  target: ResolvedTarget,
+  selectedSource: ResolvedTarget["selectedSource"],
+  fetchedFileCount: number,
+): string {
+  const ranking = target.sourceRanking.find(
+    (item) => sourceKey(item) === sourceKey(selectedSource),
+  );
+  const usedFallback =
+    sourceKey(selectedSource) !== sourceKey(target.selectedSource);
+  const parts: string[] = [];
+
+  if (usedFallback) {
+    parts.push(
+      "A higher-ranked documentation source failed fetch or quality checks, so the resolver used the next viable candidate.",
+    );
+  }
+
+  if (ranking) {
+    parts.push(ranking.reason);
+  }
+
+  if (fetchedFileCount === 0) {
+    parts.push("No candidate ultimately produced usable documentation files.");
+  }
+
+  return parts.join(" ").trim();
+}
+
+function buildManifest(
+  target: ResolvedTarget,
+  selectedSource: ResolvedTarget["selectedSource"],
+  attempts: SourceManifest["attempts"],
+  fetchedFileCount: number,
+): SourceManifest {
+  return {
+    packageName: target.packageName,
+    normalizedName: target.normalizedName,
+    compositionType: target.compositionType,
+    selectedSource,
+    selectedSourceReason: buildSelectedSourceReason(
+      target,
+      selectedSource,
+      fetchedFileCount,
+    ),
+    sourceCandidates: target.sourceCandidates,
+    sourceRanking: target.sourceRanking,
+    versionContext: target.versionContext,
+    attempts,
+    fetchedFileCount,
+    generatedAt: new Date().toISOString(),
+  };
+}
 
 function sanitizeRelativePath(value: string): string {
   const normalized = value.replaceAll("\\", "/").replace(/^\/+/, "");
@@ -136,7 +193,6 @@ export const installCommand = new Command("install")
     "Resolution priority: llms, github, or crawl",
     "llms",
   )
-  .option("--npm-only", "Restrict analysis to npm dependencies (default in v2)", true)
   .action(async (options: InstallOptions) => {
     const projectRoot = process.cwd();
     const spinner = ora("Analyzing package.json dependencies...").start();
@@ -156,9 +212,7 @@ export const installCommand = new Command("install")
         spinner.text = `Using ${selectedDependencies.length} explicit packages...`;
       } else {
         const stack = await analyzeProjectStack(projectRoot);
-        const npmDeps = uniqueDepsByNormalizedName(
-          stack.dependencies.filter((dep) => dep.ecosystem === "npm"),
-        );
+        const npmDeps = uniqueDepsByNormalizedName(stack.dependencies);
 
         if (npmDeps.length === 0) {
           spinner.fail(pc.yellow("No npm dependencies found."));
@@ -203,16 +257,12 @@ export const installCommand = new Command("install")
         if (fetchResult.files.length === 0) {
           failures.push(target.packageName);
 
-          const manifest: SourceManifest = {
-            packageName: target.packageName,
-            normalizedName: target.normalizedName,
-            compositionType: target.compositionType,
-            selectedSource: fetchResult.selectedSource,
-            sourceCandidates: target.sourceCandidates,
-            attempts: fetchResult.attempts,
-            fetchedFileCount: 0,
-            generatedAt: new Date().toISOString(),
-          };
+          const manifest = buildManifest(
+            target,
+            fetchResult.selectedSource,
+            fetchResult.attempts,
+            0,
+          );
 
           await Bun.write(
             join(outputDir, "SOURCE_MANIFEST.json"),
@@ -233,16 +283,12 @@ export const installCommand = new Command("install")
           await Bun.write(finalPath, normalized);
         }
 
-        const manifest: SourceManifest = {
-          packageName: target.packageName,
-          normalizedName: target.normalizedName,
-          compositionType: target.compositionType,
-          selectedSource: fetchResult.selectedSource,
-          sourceCandidates: target.sourceCandidates,
-          attempts: fetchResult.attempts,
-          fetchedFileCount: fetchResult.files.length,
-          generatedAt: new Date().toISOString(),
-        };
+        const manifest = buildManifest(
+          target,
+          fetchResult.selectedSource,
+          fetchResult.attempts,
+          fetchResult.files.length,
+        );
 
         await Bun.write(
           join(outputDir, "SOURCE_MANIFEST.json"),

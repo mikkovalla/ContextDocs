@@ -1,7 +1,7 @@
 {
   "name": "contextdocs",
   "version": "1.0.0",
-  "description": "A CLI tool to generate LLM friendly documentation from a library, framework, or project.",
+  "description": "A CLI tool to build local npm documentation indexes for AI agents.",
   "main": "cli/index.ts",
   "scripts": {
     "dev": "bun run cli/index.ts",

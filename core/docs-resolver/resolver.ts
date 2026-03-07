@@ -1,238 +1,18 @@
 import {
+  CandidateOrigin,
+  NpmVersionContext,
   ParsedDependency,
   ResolvedSourceCandidate,
   ResolvedTarget,
   SourcePriority,
 } from "../../types";
 import { normalizeNpmPackageName } from "./npm-normalize";
+import { PACKAGE_PROFILES } from "./npm-profiles";
 import { fetchNpmPackageMetadata } from "./registry";
-
-type PackageProfile = {
-  compositionType: ResolvedTarget["compositionType"];
-  candidates: ResolvedSourceCandidate[];
-};
-
-const PACKAGE_PROFILES: Record<string, PackageProfile> = {
-  react: {
-    compositionType: "mdx_tree",
-    candidates: [
-      {
-        kind: "github_tree",
-        url: "https://github.com/reactjs/react.dev/tree/main/src/content",
-        description: "React official docs content",
-        excludePathPatterns: [
-          "^blog/",
-          "^community/",
-          "^errors/",
-          "^warnings/",
-        ],
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://react.dev/reference",
-        description: "React docs website reference",
-        includePathPrefixes: ["reference", "learn"],
-        excludePathPatterns: ["blog", "community", "releases"],
-      },
-    ],
-  },
-  next: {
-    compositionType: "mdx_tree",
-    candidates: [
-      {
-        kind: "github_tree",
-        url: "https://github.com/vercel/next.js/tree/canary/docs",
-        description: "Next.js docs in source repo",
-        excludePathPatterns: ["^04-community/"],
-      },
-      {
-        kind: "llms_txt",
-        url: "https://nextjs.org/llms.txt",
-        description: "Next.js llms index",
-        allowedHostnames: ["nextjs.org"],
-        includePathPrefixes: ["docs"],
-        maxFiles: 120,
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://nextjs.org/docs",
-        description: "Next.js public docs",
-        includePathPrefixes: ["docs"],
-        maxFiles: 120,
-      },
-    ],
-  },
-  nestjs: {
-    compositionType: "markdown_tree",
-    candidates: [
-      {
-        kind: "github_tree",
-        url: "https://github.com/nestjs/docs.nestjs.com/tree/master/content",
-        description: "Nest docs repo content",
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://docs.nestjs.com",
-        description: "Nest public docs",
-      },
-    ],
-  },
-  zod: {
-    compositionType: "website_docs",
-    candidates: [
-      {
-        kind: "llms_full",
-        url: "https://zod.dev/llms-full.txt",
-        description: "Zod llms full feed",
-        maxFiles: 140,
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://zod.dev",
-        description: "Zod docs website",
-        includePathPrefixes: ["api", "packages", "basics"],
-        excludePathPatterns: ["discord", "watch", "share", "badge"],
-        maxFiles: 80,
-      },
-    ],
-  },
-  "drizzle-orm": {
-    compositionType: "website_docs",
-    candidates: [
-      {
-        kind: "llms_txt",
-        url: "https://orm.drizzle.team/llms.txt",
-        description: "Drizzle llms feed",
-        allowedHostnames: ["orm.drizzle.team"],
-        includePathPrefixes: ["docs"],
-        maxFiles: 120,
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://orm.drizzle.team/docs",
-        description: "Drizzle docs website",
-        includePathPrefixes: ["docs"],
-        excludePathPatterns: ["announcements", "blog", "releases"],
-        maxFiles: 120,
-      },
-    ],
-  },
-  "drizzle-zod": {
-    compositionType: "website_docs",
-    candidates: [
-      {
-        kind: "llms_txt",
-        url: "https://orm.drizzle.team/llms.txt",
-        description: "Drizzle llms feed",
-        allowedHostnames: ["orm.drizzle.team"],
-        includePathPrefixes: ["docs/zod"],
-        maxFiles: 60,
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://orm.drizzle.team/docs/zod",
-        description: "Drizzle Zod docs section",
-        includePathPrefixes: ["docs/zod"],
-        maxFiles: 60,
-      },
-      {
-        kind: "readme",
-        url: "npm:drizzle-zod",
-        description: "Package README from npm registry",
-      },
-    ],
-  },
-  tailwindcss: {
-    compositionType: "mdx_tree",
-    candidates: [
-      {
-        kind: "github_tree",
-        url: "https://github.com/tailwindlabs/tailwindcss.com/tree/main/src/docs",
-        description: "Tailwind docs source",
-        maxFiles: 300,
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://tailwindcss.com/docs",
-        description: "Tailwind docs website",
-        includePathPrefixes: ["docs"],
-        maxFiles: 220,
-      },
-    ],
-  },
-  daisyui: {
-    compositionType: "website_docs",
-    candidates: [
-      {
-        kind: "github_tree",
-        url: "https://github.com/saadeghi/daisyui/tree/master/packages/docs/src/routes/(routes)/docs",
-        description: "daisyUI docs pages in source",
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://daisyui.com/docs",
-        description: "daisyUI docs site",
-        includePathPrefixes: ["docs"],
-        excludePathPatterns: ["blog", "frameworks"],
-        maxFiles: 120,
-      },
-    ],
-  },
-  supabase: {
-    compositionType: "mdx_tree",
-    candidates: [
-      {
-        kind: "github_tree",
-        url: "https://github.com/supabase/supabase/tree/master/apps/docs/content/reference/javascript",
-        description: "Supabase JavaScript SDK reference",
-        excludePathPatterns: ["_fixtures?", "troubleshooting", "_template"],
-        maxFiles: 120,
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://supabase.com/docs/reference/javascript",
-        description: "Supabase JS reference site",
-        includePathPrefixes: ["docs/reference/javascript"],
-        excludePathPatterns: ["troubleshooting", "_template"],
-        maxFiles: 120,
-      },
-    ],
-  },
-  aceternity: {
-    compositionType: "registry_docs",
-    candidates: [
-      {
-        kind: "registry_json",
-        url: "https://ui.aceternity.com/registry/bento-grid.json",
-        description: "Aceternity registry sample endpoint",
-        maxFiles: 20,
-      },
-      {
-        kind: "sitemap_site",
-        url: "https://ui.aceternity.com/docs",
-        description: "Aceternity docs site",
-        includePathPrefixes: ["docs/components", "docs"],
-        excludePathPatterns: ["blog", "showcase"],
-        maxFiles: 60,
-      },
-    ],
-  },
-  postgres: {
-    compositionType: "readme_first",
-    candidates: [
-      {
-        kind: "readme",
-        url: "npm:postgres",
-        description: "postgres package README",
-      },
-      {
-        kind: "github_tree",
-        url: "https://github.com/porsager/postgres/tree/master",
-        description: "postgres source repo",
-      },
-    ],
-  },
-};
+import {
+  analyzeNpmVersion,
+  evaluateCandidateCompatibility,
+} from "./version-strategy";
 
 const PRIORITY_ORDER: Record<
   SourcePriority,
@@ -266,6 +46,7 @@ const PRIORITY_ORDER: Record<
 
 type CandidateWithOrigin = {
   candidate: ResolvedSourceCandidate;
+  origin: CandidateOrigin;
   curated: boolean;
 };
 
@@ -293,23 +74,45 @@ function uniqCandidates(
 function rankCandidates(
   candidates: CandidateWithOrigin[],
   sourcePriority: SourcePriority,
-): CandidateWithOrigin[] {
+  versionContext: NpmVersionContext,
+): Array<
+  CandidateWithOrigin & {
+    compatibilityScore: number;
+    compatibilityReason: string;
+    priorityIndex: number;
+  }
+> {
   const order = PRIORITY_ORDER[sourcePriority];
+  return candidates
+    .map((item) => {
+      const compatibility = evaluateCandidateCompatibility(
+        item.candidate,
+        versionContext,
+      );
+      const priorityIndex = order.indexOf(item.candidate.kind);
 
-  return [...candidates].sort((a, b) => {
-    if (a.curated !== b.curated) {
-      return a.curated ? -1 : 1;
-    }
+      return {
+        ...item,
+        compatibilityScore: compatibility.score,
+        compatibilityReason: compatibility.reason,
+        priorityIndex: priorityIndex === -1 ? Number.MAX_SAFE_INTEGER : priorityIndex,
+      };
+    })
+    .sort((a, b) => {
+      if (a.curated !== b.curated) {
+        return a.curated ? -1 : 1;
+      }
 
-    const idxA = order.indexOf(a.candidate.kind);
-    const idxB = order.indexOf(b.candidate.kind);
+      if (a.compatibilityScore !== b.compatibilityScore) {
+        return b.compatibilityScore - a.compatibilityScore;
+      }
 
-    if (idxA !== idxB) {
-      return idxA - idxB;
-    }
+      if (a.priorityIndex !== b.priorityIndex) {
+        return a.priorityIndex - b.priorityIndex;
+      }
 
-    return a.candidate.url.localeCompare(b.candidate.url);
-  });
+      return a.candidate.url.localeCompare(b.candidate.url);
+    });
 }
 
 function isLikelyDocsUrl(url: string): boolean {
@@ -419,10 +222,12 @@ export async function resolveDocsTargets(
     const candidates = uniqCandidates([
       ...(profile?.candidates ?? []).map((candidate) => ({
         candidate,
+        origin: "curated" as const,
         curated: true,
       })),
       ...fallbackCandidates.map((candidate) => ({
         candidate,
+        origin: "metadata_fallback" as const,
         curated: false,
       })),
     ]);
@@ -431,7 +236,12 @@ export async function resolveDocsTargets(
       continue;
     }
 
-    const rankedCandidates = rankCandidates(candidates, sourcePriority);
+    const versionContext = analyzeNpmVersion(dep.version);
+    const rankedCandidates = rankCandidates(
+      candidates,
+      sourcePriority,
+      versionContext,
+    );
     const resolvedCandidates = rankedCandidates.map((item) => item.candidate);
 
     targets.push({
@@ -439,6 +249,14 @@ export async function resolveDocsTargets(
       normalizedName,
       selectedSource: resolvedCandidates[0],
       sourceCandidates: resolvedCandidates,
+      sourceRanking: rankedCandidates.map((item, index) => ({
+        kind: item.candidate.kind,
+        url: item.candidate.url,
+        origin: item.origin,
+        rank: index + 1,
+        reason: `${item.origin === "curated" ? "Curated npm profile candidate." : "Metadata fallback candidate."} ${item.compatibilityReason} Priority mode "${sourcePriority}" ranks ${item.candidate.kind} at position ${item.priorityIndex + 1}.`,
+      })),
+      versionContext,
       compositionType: profile?.compositionType ?? "website_docs",
       confidence: profile ? 0.95 : 0.7,
     });
